@@ -1,3 +1,43 @@
+# JSHint API front end
+
+[Português (Brasil)](README.pt-BR.md)
+
+## Idea and process
+
+A static learning client for a JSHint API, not a backend API boilerplate. Source reviewed on 2026-10-01. No dated planning notes or wireframes were found in the reviewed files. The interface lets a user provide a filename, URL or JavaScript, choose options and display status/results in a modal.
+
+## Architecture and design
+
+`index.html` loads Bootstrap 5.0.0-beta2, Font Awesome, local CSS and `assets/js/script.js`. The script creates a Bootstrap modal, collects FormData, joins selected options and uses fetch against a historical Heroku API URL. It sends the key in the POST Authorization header and status query string. Returned results are displayed through HTML strings. There is no server implementation in the reviewed root.
+
+## Local preview
+
+```bash
+python3 -m http.server 8000
+```
+
+Open `http://localhost:8000/`. This is a suggested static preview, not a verified run. Do not click Check Key or Run Checks with the committed key or private source code. Those controls make external requests; opening a fixture does not establish API availability, permission or a safe data-handling contract.
+
+## Testing, privacy and limitations
+
+No automated suite was found in the reviewed listing. No requests, key validation or application tests were run in this update, and current API availability is unknown.
+
+The public client contains a non-empty literal API_KEY. Its value is deliberately not repeated here and its current validity is unknown. Browser code cannot keep a service secret private. Review revocation and credential design separately before using this as a real integration.
+
+The client sends code/URLs to a third-party endpoint and puts API response strings into innerHTML. Review disclosure consent, input/output handling, network/JSON errors and safe DOM rendering. Test option processing, empty input and modal states only with synthetic data and an authorized test service. `displayException` also assigns results without a local declaration.
+
+## Snapshots
+
+No screenshot was verified or added. Future captures under `docs/assets/` should use synthetic code and remove keys, sensitive URLs and private results. Label the page as a demo client, not a working service unless the actual endpoint has been verified safely.
+
+## Credits and licensing
+
+Code Institute template/course material and dependencies retain their original rights. No new license is applied. Original README preserved below as historical reference, not current setup advice.
+
+---
+
+## Original README
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome Iuri Johansson,
